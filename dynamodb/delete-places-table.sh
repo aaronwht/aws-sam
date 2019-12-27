@@ -1,0 +1,1 @@
+aws dynamodb delete-table --table-name places --endpoint-url http://localhost:8000

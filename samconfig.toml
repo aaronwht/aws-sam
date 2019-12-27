@@ -1,0 +1,10 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "aws-serverless-stack"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-jearf6g1fes5"
+s3_prefix = "aws-serverless-stack"
+region = "us-west-2"
+capabilities = "CAPABILITY_NAMED_IAM"
+

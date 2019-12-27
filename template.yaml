@@ -1,0 +1,131 @@
+# THIS CODE IS NOT PRODUCTION WORTH - FOR TUTORIAL PURPOSES ONLY #
+# THIS CODE IS NOT PRODUCTION WORTH - FOR TUTORIAL PURPOSES ONLY #
+# THIS CODE IS NOT PRODUCTION WORTH - FOR TUTORIAL PURPOSES ONLY #
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Globals:
+  Api:
+    Cors:
+      AllowMethods: "'OPTIONS,POST,GET'"
+      AllowHeaders: "'*'"
+      AllowOrigin: "'*'"
+  Function:
+    Environment:
+      Variables:
+        Region: 'us-west-2' # Specify your region here
+        DynamoDbEndpoint: 'http://docker.for.mac.host.internal:8000'
+        UploadPictureBucket: 'images.placesiwanttovisit.com'
+        UploadPictureBucketRegion: 'us-west-2'
+
+Resources:
+  Index:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs10.x
+      Policies: AmazonDynamoDBReadOnlyAccess
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /
+            Method: get
+  GetPlace:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: get-place.handler
+      Runtime: nodejs10.x
+      Policies: AmazonDynamoDBReadOnlyAccess
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /place/{id}
+            Method: get
+  CreatePlace:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: create-place.handler
+      Runtime: nodejs10.x
+      Policies: AmazonDynamoDBFullAccess
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /create
+            Method: post
+  UpdatePlace:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: update-place.handler
+      Runtime: nodejs10.x
+      Policies: AmazonDynamoDBFullAccess
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /update
+            Method: post
+  SavePicture:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: save-picture.handler
+      Runtime: nodejs10.x
+      Policies: AmazonDynamoDBFullAccess
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /save-picture
+            Method: post
+  
+  DeletePicture:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: delete-picture.handler
+      Runtime: nodejs10.x
+      Policies: AmazonDynamoDBFullAccess
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /delete-picture
+            Method: post
+
+  DeletePlace:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: delete-place.handler
+      Runtime: nodejs10.x
+      Policies: AmazonDynamoDBFullAccess
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /delete
+            Method: post
+  SignedUrl:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: signed-url.handler
+      Runtime: nodejs10.x
+      Policies: AmazonS3FullAccess
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /signed-url
+            Method: post
+  PlacesTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: places
+      AttributeDefinitions:
+        - AttributeName: placeKey
+          AttributeType: S
+      KeySchema:
+        - AttributeName: placeKey
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 2
+        WriteCapacityUnits: 1

@@ -1,0 +1,25 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "## Implements Lambdas, API Gateway, and DynamoDB",
+  "main": "index.js",
+  "dependencies": {
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.553.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronwht/aws-serverless.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronwht/aws-serverless/issues"
+  },
+  "homepage": "https://github.com/aaronwht/aws-serverless#readme"
+}
