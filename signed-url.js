@@ -69,5 +69,5 @@ function updateFileName(fileName) {
 
     newFileName = newFileName.substr(0, newFileName.length - 1)
     const fileExtension = fileName.split('.').pop()
-    return newFileName + '-' + randomNumber + '.' + fileExtension
+    return randomNumber + '-' + newFileName + '.' + fileExtension
 }
