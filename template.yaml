@@ -84,7 +84,9 @@ Resources:
     Properties:
       Handler: delete-picture.handler
       Runtime: nodejs10.x
-      Policies: AmazonDynamoDBFullAccess
+      Policies:
+        - AmazonDynamoDBFullAccess
+        - AmazonS3FullAccess
       Events:
         GetEvent:
           Type: Api
@@ -97,7 +99,9 @@ Resources:
     Properties:
       Handler: delete-place.handler
       Runtime: nodejs10.x
-      Policies: AmazonDynamoDBFullAccess
+      Policies:
+        - AmazonDynamoDBFullAccess
+        - AmazonS3FullAccess
       Events:
         GetEvent:
           Type: Api
