@@ -14,7 +14,6 @@ Globals:
         DynamoDbEndpoint: 'http://docker.for.mac.host.internal:8000'
         UploadPictureBucket: 'YOUR_S3_BUCKET_NAME'
         UploadPictureBucketRegion: 'YOUR_S3_BUCKET_REGION' # S3 bucket may be in a different region than applicaiton
-
 Resources:
   Index:
     Type: AWS::Serverless::Function
@@ -52,6 +51,7 @@ Resources:
           Properties:
             Path: /create
             Method: post
+      CodeUri: ./
   UpdatePlace:
     Type: AWS::Serverless::Function
     Properties:
@@ -64,6 +64,7 @@ Resources:
           Properties:
             Path: /update
             Method: post
+      CodeUri: ./
   SavePicture:
     Type: AWS::Serverless::Function
     Properties:
@@ -76,7 +77,7 @@ Resources:
           Properties:
             Path: /save-picture
             Method: post
-  
+      CodeUri: ./
   DeletePicture:
     Type: AWS::Serverless::Function
     Properties:
@@ -91,7 +92,7 @@ Resources:
           Properties:
             Path: /delete-picture
             Method: post
-
+      CodeUri: ./
   DeletePlace:
     Type: AWS::Serverless::Function
     Properties:
@@ -106,6 +107,7 @@ Resources:
           Properties:
             Path: /delete
             Method: post
+      CodeUri: ./
   SignedUrl:
     Type: AWS::Serverless::Function
     Properties:
