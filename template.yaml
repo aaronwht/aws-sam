@@ -6,14 +6,14 @@ Globals:
     Cors:
       AllowMethods: "'OPTIONS,POST,GET'"
       AllowHeaders: "'*'"
-      AllowOrigin: "'https://www.placesiwanttovisit.com'"
+      AllowOrigin: "''"
   Function:
     Environment:
       Variables:
         Region: 'YOUR_REGION' # Specify your region here
         DynamoDbEndpoint: 'http://docker.for.mac.host.internal:8000'
         UploadPictureBucket: 'YOUR_S3_BUCKET_NAME'
-        UploadPictureBucketRegion: 'YOUR_S3_BUCKET_REGION' # Specify your region here
+        UploadPictureBucketRegion: 'YOUR_S3_BUCKET_REGION' # S3 bucket may be in a different region than applicaiton
 
 Resources:
   Index:
