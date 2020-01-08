@@ -23,7 +23,6 @@ module.exports.handler = async (event) => {
             }
         }
 
-        // Not production worth as DynamoDB shards based on Key
         const placeKey = uuidv4()
         const params = {
             TableName: 'places',

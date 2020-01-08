@@ -1,5 +1,4 @@
-# THIS CODE IS NOT PRODUCTION WORTH - FOR TUTORIAL PURPOSES ONLY #
-
+# THIS CODE IS FOR EDUCATIONAL PURPOSES ONLY #
 version: 0.2
 phases:
   install:
@@ -9,7 +8,7 @@ phases:
     commands:
       - npm install --production
       - aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET --output-template-file outputtemplate.yaml
-      - aws cloudformation deploy --stack-name aws-serverless-stack --template-file outputtemplate.yaml --capabilities CAPABILITY_NAMED_IAM
+      - aws cloudformation deploy --stack-name YOUR_STACK_NAME --template-file outputtemplate.yaml --capabilities CAPABILITY_NAMED_IAM
 artifacts:
   type: zip
   files:

@@ -7,13 +7,8 @@ sam local start-api --port 3030 --skip-pull-image
 aws cloudformation package --template-file template.yaml --s3-bucket YOUR_AWS_BUCKET --output-template-file outputtemplate.yaml
 
 - Creates a CloudFormation Stack, scaffolds out your AWS resources, and deploys your code
-aws cloudformation deploy --stack-name YOUR_STACK_NAME --template-file outputtemplate.yaml --capabilities CAPABILITY_NAMED_IAM
+aws cloudformation deploy --stack-name YOUR_AWS_BUCKET --template-file outputtemplate.yaml --capabilities CAPABILITY_NAMED_IAM
 
-THIS CODE IS NOT PRODUCTION WORTH - FOR TUTORIAL PURPOSES ONLY
-THIS CODE IS NOT PRODUCTION WORTH - FOR TUTORIAL PURPOSES ONLY
-THIS CODE IS NOT PRODUCTION WORTH - FOR TUTORIAL PURPOSES ONLY
-THIS CODE IS NOT PRODUCTION WORTH - FOR TUTORIAL PURPOSES ONLY
-THIS CODE IS NOT PRODUCTION WORTH - FOR TUTORIAL PURPOSES ONLY
 */
 const AWS = require('aws-sdk') // dev dependency to save space
 
@@ -28,7 +23,7 @@ const docClient = new AWS.DynamoDB.DocumentClient()
 
 module.exports.handler = async () => {
     try {
-        // THIS CODE IS NOT PRODUCTION WORTH - FOR TUTORIAL PURPOSES ONLY
+        // DYNAMODB SCANS ARE SLOW - AVOID USING SCANS IN FAVOR OF QUERIES
         const places = await docClient.scan({ TableName: 'places' }).promise()
         return {
             statusCode: 200,
