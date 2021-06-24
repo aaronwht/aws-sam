@@ -1,0 +1,28 @@
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "GET",
+            "PUT",
+            "POST",
+            "HEAD"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": [
+            "Host",
+            "Originv",
+            "Referer",
+            "sec-ch-ua",
+            "sec-ch-ua-mobile",
+            "Sec-Fetch-Dest",
+            "Sec-Fetch-Mode",
+            "Sec-Fetch-Site",
+            "User-Agent"
+        ],
+        "MaxAgeSeconds": 3000
+    }
+]
